@@ -1,2 +1,2 @@
-# Big-Cash
+# Course 1
 Origin
