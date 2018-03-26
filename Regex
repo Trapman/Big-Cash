@@ -19,3 +19,16 @@ $	Matches the end of the line
 For more information about using regular expressions in Python, see https://docs.python.org/3/howto/regex.html
 '''
 
+#(I) open a file and match all of the numbers in the string, convert to integers, then sum results:
+
+import re
+
+fhand=open("regex_sum_78967.txt")
+regex_list = []
+
+for line in fhand:
+   line = line.strip()
+   x = re.findall('[0-9]+',line) 
+   for num in x: 
+        regex_list.append(int(num))
+print(sum(regex_list))
