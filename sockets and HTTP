@@ -1,0 +1,31 @@
+#basic structure for making a TCP socket connection:
+
+import socket 
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))    #just enter a website, followed by a port (usually 80)
+
+'''different ports:
+email = 25
+login = 23
+web server = 80
+web server (secured) = 443
+personal email = 109 or 110'''
+
+
+#writing an HTTP request in Python:
+
+import socket 
+
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))    #just enter a website, followed by a port (usually 80)
+
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP:/1.0\n\n'.encode()
+mysock.send(cmd)
+
+while True:
+    data = mysock.recv(512)
+    if(len(data)<1):
+        break
+    print(data.decode())
+mysock.close()
