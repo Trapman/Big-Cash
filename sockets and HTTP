@@ -45,3 +45,18 @@ while True:
         break
     print(data.decode(), end='')
 mysock.close()
+
+
+#BeautifulSoup Parsing Webpages:
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+
+url = input('Enter -  ')
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
+
+tags = soup('a')
+for tag in tags:
+    print(tag.get('href', None))
+    
+#note that url must be entered in the format of https://www.binance.com
