@@ -1,0 +1,43 @@
+import json
+
+data = '''
+{
+  "name" : "Mega",
+  "phone" : {
+    "type" : "intl",
+    "number" : "+1 734 303 4456"
+   },
+   "email" : {
+     "hide" : "yes"
+   }
+}'''
+
+info = json.loads(data)                 #convenient to use .loads() method here to convert from JSON syntax to Python list/dict
+print('Name:', info["name"])            #'info is name of dict, then we just slice to pull out whatever we want
+print('Hide:', info["email"]["hide"])
+
+#json is essentially a python dict, with key-value pairs. 
+#e.g. 'name' is a key, 'Mega' is a value, 'phone' is a key, the value is
+#a nested dict with 'type' and 'number' inside of it. 
+############################
+import json
+
+data = '''
+[                           #essentially a list with 2 dicts
+  { "id" : "001",           #dict 1
+    "x" : "2",
+    "name" : "Mega"
+  } ,
+  { "id" : "009",           #dict 2
+    "x" : "7",
+    "name" : "Hoang"
+  }
+]'''
+
+info = json.loads(data)
+print('User count:', len(info))
+
+for item in info:
+    print('Name', item['name'])
+    print('Id', item['id'])
+    print('Attribute', item['x'])
