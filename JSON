@@ -76,3 +76,27 @@ while True:
     print('lat', lat, 'lng', lng)
     location = js['results'][0]['formatted_address']
     print(location)
+############################
+Assignment 1
+
+import json
+import urllib.request, urllib.parse, urllib.error
+counts = list()
+inp = input('Enter a URL: ')
+
+print('Retrieving', inp)
+url = urllib.request.urlopen(inp)
+data = url.read()
+print("length of data: ", len(data))
+
+try:
+    js = json.loads(data)
+except:
+    js = None
+
+comments = js['comments']
+for comment in comments:
+    counts.append(comment['count'])
+
+print("total number of counts: ", (sum(counts)))
+####################
